@@ -8,19 +8,19 @@ export const Hero = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Find Your Perfect
-            <span className="text-primary block">Fitness Gear</span>
+            Compare Sports & Fitness
+            <span className="text-primary block">Products Across Platforms</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Compare prices, read reviews, and discover the best gym equipment and sports gear 
-            from thousands of products across top brands.
+            Find the best deals on sports gear, fitness equipment, and supplements 
+            from Amazon, Flipkart, Decathlon, Nike, Adidas, Puma and more.
           </p>
           <Button size="lg" className="mr-4">
             <Search className="mr-2 h-5 w-5" />
-            Start Shopping
+            Start Comparing
           </Button>
           <Button variant="outline" size="lg">
-            Compare Products
+            View Deals
           </Button>
         </div>
 
@@ -36,8 +36,8 @@ export const Hero = () => {
           <div className="text-center">
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <Award className="h-8 w-8 text-primary mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-foreground mb-2">1M+</h3>
-              <p className="text-muted-foreground">Expert Reviews</p>
+              <h3 className="text-2xl font-bold text-foreground mb-2">15+</h3>
+              <p className="text-muted-foreground">E-commerce Partners</p>
             </div>
           </div>
           <div className="text-center">

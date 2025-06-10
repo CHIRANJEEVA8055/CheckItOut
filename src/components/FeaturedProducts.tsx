@@ -2,56 +2,71 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, TrendingUp } from "lucide-react";
+import { Star, TrendingUp, Heart } from "lucide-react";
+import { useState } from "react";
 
 const featuredProducts = [
   {
     id: 1,
     name: "PowerMax Adjustable Dumbbells",
-    price: "$299",
-    originalPrice: "$399",
+    price: "₹18,999",
+    originalPrice: "₹25,999",
     rating: 4.8,
     reviews: 2340,
     image: "/placeholder.svg",
     badge: "Best Seller",
-    discount: "25% OFF"
+    discount: "25% OFF",
+    platforms: ["Amazon", "Flipkart", "Decathlon"]
   },
   {
     id: 2,
     name: "TreadFit Pro 3000",
-    price: "$1,299",
-    originalPrice: "$1,699",
+    price: "₹89,999",
+    originalPrice: "₹1,19,999",
     rating: 4.6,
     reviews: 1890,
     image: "/placeholder.svg",
     badge: "Editor's Choice",
-    discount: "24% OFF"
+    discount: "24% OFF",
+    platforms: ["Amazon", "Cult.fit"]
   },
   {
     id: 3,
     name: "FlexForm Yoga Mat Premium",
-    price: "$79",
-    originalPrice: "$99",
+    price: "₹4,999",
+    originalPrice: "₹6,999",
     rating: 4.9,
     reviews: 5670,
     image: "/placeholder.svg",
     badge: "Top Rated",
-    discount: "20% OFF"
+    discount: "20% OFF",
+    platforms: ["Decathlon", "Amazon", "Flipkart"]
   },
   {
     id: 4,
     name: "StrengthCore Home Gym",
-    price: "$899",
-    originalPrice: "$1,199",
+    price: "₹59,999",
+    originalPrice: "₹79,999",
     rating: 4.7,
     reviews: 1230,
     image: "/placeholder.svg",
     badge: "New Launch",
-    discount: "25% OFF"
+    discount: "25% OFF",
+    platforms: ["Amazon", "Decathlon"]
   }
 ];
 
 export const FeaturedProducts = () => {
+  const [wishlist, setWishlist] = useState<number[]>([]);
+
+  const toggleWishlist = (productId: number) => {
+    setWishlist(prev => 
+      prev.includes(productId)
+        ? prev.filter(id => id !== productId)
+        : [...prev, productId]
+    );
+  };
+
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -79,9 +94,23 @@ export const FeaturedProducts = () => {
                   <Badge className="absolute top-3 left-3" variant="secondary">
                     {product.badge}
                   </Badge>
-                  <Badge className="absolute top-3 right-3 bg-red-500 text-white">
+                  <Badge className="absolute top-3 right-12 bg-red-500 text-white">
                     {product.discount}
                   </Badge>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="absolute top-3 right-3 h-8 w-8 p-0 bg-white/80 hover:bg-white"
+                    onClick={() => toggleWishlist(product.id)}
+                  >
+                    <Heart 
+                      className={`h-4 w-4 ${
+                        wishlist.includes(product.id) 
+                          ? "fill-red-500 text-red-500" 
+                          : "text-gray-600"
+                      }`} 
+                    />
+                  </Button>
                 </div>
                 
                 <div className="p-4">
@@ -113,6 +142,17 @@ export const FeaturedProducts = () => {
                       <span className="text-sm text-muted-foreground line-through">
                         {product.originalPrice}
                       </span>
+                    </div>
+                  </div>
+
+                  <div className="mb-3">
+                    <p className="text-xs text-muted-foreground mb-1">Available on:</p>
+                    <div className="flex flex-wrap gap-1">
+                      {product.platforms.map((platform, i) => (
+                        <Badge key={i} variant="outline" className="text-xs">
+                          {platform}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
                   
