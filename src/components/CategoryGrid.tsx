@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Dumbbell, Running, Trophy, Bike } from "lucide-react";
+import { Dumbbell, Activity, Trophy, Bike } from "lucide-react";
 
 const categories = [
   {
@@ -12,7 +12,7 @@ const categories = [
   },
   {
     name: "Cardio Machines",
-    icon: Running,
+    icon: Activity,
     count: "8,500+ products",
     image: "/placeholder.svg",
     color: "bg-green-50 text-green-600"
